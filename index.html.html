@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demetria Yolanda cumple 50 años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Playfair+Display:wght@600;700&family=Alex+Brush&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --negro: #0C0C0B;
+    --negro2: #1B1916;
+    --marfil: #F6EFDF;
+    --marfil-osc: #EAE0C8;
+    --oro: #C9A227;
+    --oro-claro: #E8D9A0;
+    --vino: #8B2E2E;
+    --tinta: #241F16;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--tinta);
+    background:var(--marfil);
+  }
+  h1,h2{font-family:'Cormorant Garamond', serif;}
+
+  .hero{
+    min-height:100vh;
+    background:var(--marfil-osc);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:3rem 1.2rem;
+  }
+  .tarjeta-invitacion{
+    position:relative;
+    width:100%;
+    max-width:520px;
+    aspect-ratio:3/4;
+    background:radial-gradient(ellipse at 50% 0%, #201d18 0%, var(--negro) 70%);
+    color:var(--marfil);
+    text-align:center;
+    padding:2.6rem 2rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    opacity:0;
+    animation:aparecer 1s ease forwards;
+  }
+  .marco-svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+  }
+  .hoja{position:absolute; width:100px; height:auto; opacity:0.95;}
+  .hoja.sup-izq{top:-6px; left:-8px;}
+  .hoja.inf-der{bottom:-6px; right:-8px; transform:rotate(180deg);}
+  .contenido-invitacion{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    color:var(--marfil);
+    margin:0 0 0.2rem;
+    font-weight:600;
+  }
+  .fila-numeral{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:0.6rem;
+    margin:1.1rem 0 0.6rem;
+  }
+  .rayitas{display:flex; flex-direction:column; gap:6px; margin-top:1.6rem;}
+  .rayitas span{display:block; width:34px; height:1px; background:var(--oro);}
+  .numeral{
+    font-size:5.6rem;
+    font-weight:600;
+    line-height:0.8;
+    background:linear-gradient(180deg, var(--oro-claro) 0%, var(--oro) 55%, #8a6a17 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .numeral sup{
+    font-size:1.6rem;
+    font-weight:600;
+    vertical-align:super;
+    color:var(--oro-claro);
+  }
+  .cinta{
+    display:inline-block;
+    border:1px solid var(--oro);
+    padding:0.5rem 1.6rem;
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    font-weight:600;
+    color:var(--marfil);
+    margin:0.4rem 0 1rem;
+  }
+  .script{
+    font-family:'Alex Brush', cursive;
+    font-size:2.6rem;
+    color:var(--marfil);
+    margin:0 0 1rem;
+    line-height:1;
+  }
+  .divisor{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    color:var(--oro-claro);
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    font-weight:600;
+    margin-bottom:0.6rem;
+  }
+  .divisor .linea{width:34px; height:1px; background:var(--oro-claro);}
+  .nombre{
+    font-family:'Playfair Display', serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--marfil);
+    margin:0 0 1rem;
+  }
+  .regla-larga{width:70%; height:1px; background:var(--oro); margin:0 0 1.3rem;}
+  .fila-datos{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.9rem;
+    font-size:0.82rem;
+    color:var(--marfil);
+    margin-bottom:0.9rem;
+  }
+  .fila-datos .sep{color:var(--oro); opacity:0.7;}
+  .fila-datos a{color:var(--marfil); text-decoration:underline; text-underline-offset:3px;}
+  .fila-datos a:hover{color:var(--oro-claro);}
+  .cta-hero{
+    display:inline-block;
+    margin-top:0.6rem;
+    padding:0.7rem 1.7rem;
+    border:1px solid var(--oro);
+    color:var(--marfil);
+    text-decoration:none;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .cta-hero:hover{background:var(--oro); color:var(--negro);}
+
+  @keyframes aparecer{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tarjeta-invitacion{animation:none; opacity:1;}
+  }
+
+  section{padding:4.5rem 1.5rem;}
+  .detalles{
+    background:var(--marfil);
+    max-width:840px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .detalles h2{
+    font-size:1.9rem;
+    font-weight:500;
+    margin:0 0 2.5rem;
+  }
+  .tarjetas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:1.5rem;
+  }
+  .tarjeta{
+    background:#fff;
+    border:1px solid var(--marfil-osc);
+    border-radius:6px;
+    padding:1.8rem 1.4rem;
+  }
+  .tarjeta .rotulo{
+    font-size:0.85rem;
+    color:var(--vino);
+    margin-bottom:0.5rem;
+  }
+  .tarjeta .valor{
+    font-size:1.15rem;
+    font-weight:500;
+  }
+  .tarjeta .valor a{color:var(--tinta); text-decoration:underline; text-underline-offset:3px;}
+  .vestimenta{
+    margin-top:2.5rem;
+    font-size:0.98rem;
+    color:#4a4436;
+  }
+  .vestimenta strong{color:var(--tinta);}
+
+  .rsvp{
+    background:var(--negro);
+    color:var(--marfil);
+  }
+  .rsvp-envoltorio{
+    max-width:520px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .rsvp h2{font-size:1.9rem; font-weight:500; margin:0 0 0.6rem;}
+  .rsvp p.intro{color:var(--marfil-osc); margin:0 0 2.2rem; font-size:0.98rem;}
+  .campo{text-align:left; margin-bottom:1.3rem;}
+  .campo label{
+    display:block;
+    font-size:0.88rem;
+    margin-bottom:0.5rem;
+    color:var(--oro-claro);
+  }
+  .campo input[type="text"], .campo textarea{
+    width:100%;
+    padding:0.75rem 0.9rem;
+    border-radius:4px;
+    border:1px solid rgba(246,239,223,0.25);
+    background:rgba(246,239,223,0.06);
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.98rem;
+  }
+  .campo input::placeholder, .campo textarea::placeholder{color:rgba(246,239,223,0.4);}
+  .campo textarea{resize:vertical; min-height:90px;}
+  .segmentado{
+    display:flex;
+    gap:0.6rem;
+  }
+  .segmentado button{
+    flex:1;
+    padding:0.65rem 0.5rem;
+    border-radius:4px;
+    border:1px solid rgba(246,239,223,0.25);
+    background:transparent;
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .segmentado button.activo-si{background:var(--oro); border-color:var(--oro); color:var(--negro);}
+  .segmentado button.activo-no{background:var(--vino); border-color:var(--vino); color:var(--marfil);}
+  .enviar{
+    width:100%;
+    padding:0.95rem;
+    border-radius:4px;
+    border:none;
+    background:var(--oro);
+    color:var(--negro);
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:0.5rem;
+    transition:transform 0.15s ease;
+  }
+  .enviar:active{transform:scale(0.98);}
+  .error-msg{color:#E8A2A2; font-size:0.85rem; margin-top:0.4rem; display:none;}
+  .confirmacion-ok{
+    display:none;
+    padding:1.6rem;
+    border:1px solid var(--oro);
+    border-radius:6px;
+    margin-top:1rem;
+  }
+  .confirmacion-ok p{margin:0.3rem 0 0;}
+
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem 3rem;
+    background:var(--negro);
+    color:var(--marfil-osc);
+    font-size:0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="tarjeta-invitacion">
+    <svg class="marco-svg" viewBox="0 0 520 693" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="260,60 460,220 460,530 260,633 60,530 60,220" fill="none" stroke="#8a6a17" stroke-width="1.5"/>
+      <polygon points="260,90 430,235 430,505 260,600 90,505 90,235" fill="none" stroke="#C9A227" stroke-width="1"/>
+      <line x1="18" y1="18" x2="502" y2="18" stroke="#C9A227" stroke-width="1"/>
+      <line x1="18" y1="675" x2="502" y2="675" stroke="#C9A227" stroke-width="1"/>
+    </svg>
+
+    <svg class="hoja sup-izq" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 C 25 8, 35 20, 45 40 C 30 34, 15 30, 2 34 Z" fill="#C9A227"/>
+      <path d="M2 2 C 12 22, 20 35, 40 48 C 26 40, 12 34, 4 24 Z" fill="#B8923E"/>
+      <path d="M2 2 C 18 6, 30 14, 42 30" stroke="#8a6a17" stroke-width="1" fill="none"/>
+    </svg>
+    <svg class="hoja inf-der" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 C 25 8, 35 20, 45 40 C 30 34, 15 30, 2 34 Z" fill="#C9A227"/>
+      <path d="M2 2 C 12 22, 20 35, 40 48 C 26 40, 12 34, 4 24 Z" fill="#B8923E"/>
+      <path d="M2 2 C 18 6, 30 14, 42 30" stroke="#8a6a17" stroke-width="1" fill="none"/>
+    </svg>
+
+    <div class="contenido-invitacion">
+      <p class="eyebrow">Estás invitado a celebrar</p>
+      <p class="eyebrow">los</p>
+
+      <div class="fila-numeral">
+        <div class="numeral">50<sup>años</sup></div>
+      </div>
+
+      <div class="cinta">CUMPLEAÑOS DORADO</div>
+      <div class="script">Celebración</div>
+
+      <div class="divisor"><span class="linea"></span>EN HONOR A<span class="linea"></span></div>
+      <p class="nombre">DEMETRIA YOLANDA</p>
+      <div class="regla-larga"></div>
+
+      <div class="fila-datos">
+        <a href="https://maps.app.goo.gl/1wQChsJzeJ6BY4bS9" target="_blank" rel="noopener">Ver ubicación</a>
+        <span class="sep">|</span>
+        <span>12 SEP 2026</span>
+        <span class="sep">|</span>
+        <span>8:00 p.m.</span>
+      </div>
+
+      <a href="#confirmar" class="cta-hero">Confirmar asistencia</a>
+    </div>
+  </div>
+</section>
+
+<section class="detalles">
+  <h2>Detalles de la celebración</h2>
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <div class="rotulo">Fecha</div>
+      <div class="valor">12 de septiembre, 2026</div>
+    </div>
+    <div class="tarjeta">
+      <div class="rotulo">Hora</div>
+      <div class="valor">8:00 p. m.</div>
+    </div>
+    <div class="tarjeta">
+      <div class="rotulo">Lugar</div>
+      <div class="valor"><a href="https://maps.app.goo.gl/1wQChsJzeJ6BY4bS9" target="_blank" rel="noopener">Ver en Google Maps</a></div>
+    </div>
+  </div>
+  <p class="vestimenta"><strong>Código de vestimenta:</strong> elegante casual — luce tan bien como te sientas cómodo para bailar toda la noche.</p>
+</section>
+
+<section class="rsvp" id="confirmar">
+  <div class="rsvp-envoltorio">
+    <h2>Confirma tu asistencia</h2>
+    <p class="intro">Tu nombre y mensaje se guardan aquí para que Demetria Yolanda pueda leerlos.</p>
+
+    <form id="form-rsvp" action="https://formspree.io/f/mdeolkbg" method="POST">
+      <div class="campo">
+        <label for="nombre">Tu nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido">
+        <div class="error-msg" id="error-nombre">Escribe tu nombre para continuar.</div>
+      </div>
+
+      <div class="campo">
+        <label>¿Asistirás?</label>
+        <div class="segmentado">
+          <button type="button" id="btn-si">Sí, ahí estaré</button>
+          <button type="button" id="btn-no">No podré ir</button>
+        </div>
+        <input type="hidden" id="asistencia-input" name="asistencia">
+        <div class="error-msg" id="error-asistencia">Selecciona una opción.</div>
+      </div>
+
+      <div class="campo">
+        <label for="mensaje">Un mensaje para la festejada (opcional)</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras para Demetria Yolanda"></textarea>
+      </div>
+
+      <button type="submit" class="enviar" id="btn-enviar">Enviar confirmación</button>
+    </form>
+
+    <div class="confirmacion-ok" id="confirmacion-ok">
+      <p id="confirmacion-texto">¡Gracias! Tu confirmación fue registrada.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Hecho con cariño para los 50 años de Demetria Yolanda
+</footer>
+
+<script>
+let asistencia = null;
+
+const btnSi = document.getElementById('btn-si');
+const btnNo = document.getElementById('btn-no');
+const errorAsistencia = document.getElementById('error-asistencia');
+const errorNombre = document.getElementById('error-nombre');
+
+btnSi.addEventListener('click', () => {
+  asistencia = 'si';
+  btnSi.classList.add('activo-si');
+  btnNo.classList.remove('activo-no');
+  errorAsistencia.style.display = 'none';
+});
+
+btnNo.addEventListener('click', () => {
+  asistencia = 'no';
+  btnNo.classList.add('activo-no');
+  btnSi.classList.remove('activo-si');
+  errorAsistencia.style.display = 'none';
+});
+
+document.getElementById('nombre').addEventListener('input', () => {
+  errorNombre.style.display = 'none';
+});
+
+const asistenciaInput = document.getElementById('asistencia-input');
+
+document.getElementById('form-rsvp').addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+  const formulario = evento.target;
+  const nombre = document.getElementById('nombre').value.trim();
+  const mensaje = document.getElementById('mensaje').value.trim();
+  let valido = true;
+
+  if(!nombre){
+    errorNombre.style.display = 'block';
+    valido = false;
+  }
+  if(!asistencia){
+    errorAsistencia.style.display = 'block';
+    valido = false;
+  }
+  if(!valido) return;
+
+  asistenciaInput.value = asistencia === 'si' ? 'Sí asiste' : 'No asiste';
+
+  const btnEnviar = document.getElementById('btn-enviar');
+  btnEnviar.disabled = true;
+  btnEnviar.textContent = 'Enviando...';
+
+  try{
+    const respuesta = await fetch(formulario.action, {
+      method: 'POST',
+      body: new FormData(formulario),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(!respuesta.ok){
+      throw new Error('Formspree respondió con error');
+    }
+    formulario.style.display = 'none';
+    const cajaOk = document.getElementById('confirmacion-ok');
+    document.getElementById('confirmacion-texto').textContent = asistencia === 'si'
+      ? 'Gracias, ' + nombre + '. Te esperamos el 12 de septiembre.'
+      : 'Gracias por avisar, ' + nombre + '. Te extrañaremos.';
+    cajaOk.style.display = 'block';
+  }catch(err){
+    btnEnviar.disabled = false;
+    btnEnviar.textContent = 'Enviar confirmación';
+    errorNombre.textContent = 'No se pudo enviar tu confirmación. Intenta de nuevo.';
+    errorNombre.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>
