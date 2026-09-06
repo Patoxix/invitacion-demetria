@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demetria Yolanda cumple 50 años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Playfair+Display:wght@600;700&family=Alex+Brush&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --negro: #0C0C0B;
+    --negro2: #1B1916;
+    --marfil: #F6EFDF;
+    --marfil-osc: #EAE0C8;
+    --oro: #C9A227;
+    --oro-claro: #E8D9A0;
+    --vino: #8B2E2E;
+    --tinta: #241F16;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--tinta);
+    background:var(--marfil);
+  }
+  h1,h2{font-family:'Cormorant Garamond', serif;}
+
+  .hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding:0;
+    overflow:hidden;
+  }
+  .hero-foto{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:60% 70%;
+    z-index:0;
+  }
+  .hero-velo{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(12,12,11,0.15) 0%, rgba(12,12,11,0.35) 40%, rgba(12,12,11,0.88) 78%, rgba(12,12,11,0.96) 100%);
+    z-index:1;
+  }
+  .contenido-hero{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:560px;
+    text-align:center;
+    color:var(--marfil);
+    padding:2.5rem 1.4rem 3rem;
+    opacity:0;
+    animation:aparecer 1s ease forwards;
+  }
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-size:clamp(0.75rem, 2.6vw, 0.88rem);
+    letter-spacing:0.06em;
+    color:var(--marfil);
+    margin:0 0 0.15rem;
+    font-weight:500;
+  }
+  .eyebrow.fuerte{font-weight:700; margin-bottom:0.9rem;}
+  .fila-numeral{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0.4rem 0 1rem;
+  }
+  .numeral{
+    font-family:'Baloo 2', cursive;
+    font-size:clamp(4.5rem, 22vw, 7.5rem);
+    font-weight:800;
+    line-height:0.8;
+    background:linear-gradient(135deg, #fdf3c9 8%, #e9c766 28%, #b8862e 48%, #f6e29b 65%, #ad7f28 85%, #f3dd93 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(120,85,20,0.5);
+    text-shadow:0 6px 18px rgba(0,0,0,0.35);
+    letter-spacing:-0.02em;
+  }
+  .anos-pill{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background:var(--marfil);
+    color:var(--tinta);
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:clamp(0.75rem, 2.6vw, 0.95rem);
+    padding:0.3rem 0.7rem;
+    border-radius:6px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  }
+  .nombre{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.5rem, 7vw, 2.1rem);
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--marfil);
+    margin:0 0 1rem;
+  }
+  .subtitulo-hero{
+    font-size:clamp(0.85rem, 2.8vw, 0.98rem);
+    color:var(--marfil-osc);
+    max-width:340px;
+    margin:0 auto 1.4rem;
+    line-height:1.5;
+  }
+  .dato-hero{
+    font-size:clamp(0.85rem, 2.8vw, 0.98rem);
+    color:var(--marfil);
+    margin:0.25rem 0;
+  }
+  .dato-hero.enlace a{
+    color:var(--oro-claro);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .dato-hero.enlace a:hover{color:var(--marfil);}
+  .cta-hero{
+    display:inline-block;
+    margin-top:1.3rem;
+    padding:0.8rem 2rem;
+    border:1px solid var(--oro);
+    color:var(--marfil);
+    text-decoration:none;
+    font-size:0.9rem;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .cta-hero:hover{background:var(--oro); color:var(--negro);}
+
+  @keyframes aparecer{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .contenido-hero{animation:none; opacity:1;}
+  }
+
+  section{padding:4.5rem 1.5rem;}
+  .detalles{
+    background:var(--marfil);
+    max-width:840px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .detalles h2{
+    font-size:1.9rem;
+    font-weight:500;
+    margin:0 0 2.5rem;
+  }
+  .tarjetas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:1.5rem;
+  }
+  .tarjeta{
+    background:#fff;
+    border:1px solid var(--marfil-osc);
+    border-radius:6px;
+    padding:1.8rem 1.4rem;
+  }
+  .tarjeta .rotulo{
+    font-size:0.85rem;
+    color:var(--vino);
+    margin-bottom:0.5rem;
+  }
+  .tarjeta .valor{
+    font-size:1.15rem;
+    font-weight:500;
+  }
+  .tarjeta .valor a{color:var(--tinta); text-decoration:underline; text-underline-offset:3px;}
+  .vestimenta{
+    margin-top:2.5rem;
+    font-size:0.98rem;
+    color:#4a4436;
+  }
+  .vestimenta strong{color:var(--tinta);}
+
+  .rsvp{
+    background:var(--negro);
+    color:var(--marfil);
+  }
+  .rsvp-envoltorio{
+    max-width:520px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .rsvp h2{font-size:1.9rem; font-weight:500; margin:0 0 0.6rem;}
+  .rsvp p.intro{color:var(--marfil-osc); margin:0 0 2.2rem; font-size:0.98rem;}
+  .campo{text-align:left; margin-bottom:1.3rem;}
+  .campo label{
+    display:block;
+    font-size:0.88rem;
+    margin-bottom:0.5rem;
+    color:var(--oro-claro);
+  }
+  .campo input[type="text"], .campo textarea{
+    width:100%;
+    padding:0.75rem 0.9rem;
+    border-radius:4px;
+    border:1px solid rgba(246,239,223,0.25);
+    background:rgba(246,239,223,0.06);
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.98rem;
+  }
+  .campo input::placeholder, .campo textarea::placeholder{color:rgba(246,239,223,0.4);}
+  .campo textarea{resize:vertical; min-height:90px;}
+  .segmentado{
+    display:flex;
+    gap:0.6rem;
+  }
+  .segmentado button{
+    flex:1;
+    padding:0.65rem 0.5rem;
+    border-radius:4px;
+    border:1px solid rgba(246,239,223,0.25);
+    background:transparent;
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .segmentado button.activo-si{background:var(--oro); border-color:var(--oro); color:var(--negro);}
+  .segmentado button.activo-no{background:var(--vino); border-color:var(--vino); color:var(--marfil);}
+  .enviar{
+    width:100%;
+    padding:0.95rem;
+    border-radius:4px;
+    border:none;
+    background:var(--oro);
+    color:var(--negro);
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:0.5rem;
+    transition:transform 0.15s ease;
+  }
+  .enviar:active{transform:scale(0.98);}
+  .error-msg{color:#E8A2A2; font-size:0.85rem; margin-top:0.4rem; display:none;}
+  .confirmacion-ok{
+    display:none;
+    padding:1.6rem;
+    border:1px solid var(--oro);
+    border-radius:6px;
+    margin-top:1rem;
+  }
+  .confirmacion-ok p{margin:0.3rem 0 0;}
+
+  .donacion{
+    margin-top:1.6rem;
+    padding-top:1.4rem;
+    border-top:1px solid rgba(201,162,39,0.3);
+  }
+  .donacion-texto{
+    font-size:0.92rem;
+    color:var(--marfil-osc);
+    margin:0 0 1rem;
+  }
+  .qr-imagen{
+    width:160px;
+    height:160px;
+    border-radius:8px;
+    display:block;
+    margin:0 auto 0.9rem;
+  }
+  .descargar-qr{
+    display:inline-block;
+    padding:0.55rem 1.2rem;
+    border:1px solid var(--oro);
+    color:var(--marfil);
+    text-decoration:none;
+    font-size:0.85rem;
+    border-radius:4px;
+    margin-bottom:1.1rem;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .descargar-qr:hover{background:var(--oro); color:var(--negro);}
+  .numero-yape{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.7rem;
+    font-size:1.02rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+  }
+  .numero-yape button{
+    padding:0.4rem 0.9rem;
+    border-radius:4px;
+    border:1px solid var(--oro);
+    background:transparent;
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.8rem;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .numero-yape button:hover{background:var(--oro); color:var(--negro);}
+
+  .recuerdos{border-top:1px solid rgba(201,162,39,0.25);}
+  .campo input[type="file"]{
+    width:100%;
+    padding:0.6rem 0;
+    color:var(--marfil-osc);
+    font-family:'Manrope', sans-serif;
+    font-size:0.9rem;
+  }
+  .campo input[type="file"]::file-selector-button{
+    padding:0.5rem 1rem;
+    border-radius:4px;
+    border:1px solid var(--oro);
+    background:transparent;
+    color:var(--marfil);
+    font-family:'Manrope', sans-serif;
+    font-size:0.85rem;
+    cursor:pointer;
+    margin-right:0.8rem;
+  }
+  .campo input[type="file"]::file-selector-button:hover{background:var(--oro); color:var(--negro);}
+
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem 3rem;
+    background:var(--negro);
+    color:var(--marfil-osc);
+    font-size:0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img src="demetria-foto.jpg" alt="Demetria Yolanda junto a la laguna" class="hero-foto">
+  <div class="hero-velo"></div>
+
+  <div class="contenido-hero">
+    <p class="eyebrow">Una celebración dorada</p>
+    <p class="eyebrow fuerte">Acompáñanos a celebrar los</p>
+
+    <div class="fila-numeral">
+      <div class="numeral">50</div>
+      <span class="anos-pill">Años</span>
+    </div>
+
+    <p class="nombre">DEMETRIA YOLANDA</p>
+    <p class="subtitulo-hero">Un momento significativo que merece ser celebrado en compañía.</p>
+
+    <p class="dato-hero">12 de septiembre del 2026</p>
+    <p class="dato-hero">Hora: 8:00 pm</p>
+    <p class="dato-hero enlace"><a href="https://maps.app.goo.gl/1wQChsJzeJ6BY4bS9" target="_blank" rel="noopener">Ver ubicación</a></p>
+
+    <a href="#confirmar" class="cta-hero">Confirmar asistencia</a>
+  </div>
+</section>
+
+<section class="detalles">
+  <h2>Detalles de la celebración</h2>
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <div class="rotulo">Fecha</div>
+      <div class="valor">12 de septiembre, 2026</div>
+    </div>
+    <div class="tarjeta">
+      <div class="rotulo">Hora</div>
+      <div class="valor">8:00 p. m.</div>
+    </div>
+    <div class="tarjeta">
+      <div class="rotulo">Lugar</div>
+      <div class="valor"><a href="https://maps.app.goo.gl/1wQChsJzeJ6BY4bS9" target="_blank" rel="noopener">Ver en Google Maps</a></div>
+    </div>
+  </div>
+  <p class="vestimenta"><strong>Código de vestimenta:</strong> elegante casual — luce tan bien como te sientas cómodo para bailar toda la noche.</p>
+</section>
+
+<section class="rsvp" id="confirmar">
+  <div class="rsvp-envoltorio">
+    <h2>Confirma tu asistencia</h2>
+    <p class="intro">Tu nombre y mensaje se guardan aquí para que Demetria Yolanda pueda leerlos.</p>
+
+    <form id="form-rsvp" action="https://script.google.com/macros/s/AKfycbzmpwfTPdtwL_3J2PWecV1Pp2k18Jbh7F9sXk9Rrkz8b-f_gjODeszZ6ntpKqQtGqQ9/exec" method="POST" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="nombre">Tu nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido">
+        <div class="error-msg" id="error-nombre">Escribe tu nombre para continuar.</div>
+      </div>
+
+      <div class="campo">
+        <label>¿Asistirás?</label>
+        <div class="segmentado">
+          <button type="button" id="btn-si">Sí, ahí estaré</button>
+          <button type="button" id="btn-no">No podré ir</button>
+        </div>
+        <input type="hidden" id="asistencia-input" name="asistencia">
+        <div class="error-msg" id="error-asistencia">Selecciona una opción.</div>
+      </div>
+
+      <div class="campo">
+        <label for="mensaje">Un mensaje para la festejada</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras para Demetria Yolanda"></textarea>
+        <div class="error-msg" id="error-mensaje">Escribe un mensaje para la festejada.</div>
+      </div>
+
+      <div class="campo">
+        <label for="archivo-recuerdo">¿Tienes una foto o video especial con Demetria? ¡Compártelo aquí! (opcional, máx. 10MB)</label>
+        <input type="file" id="archivo-recuerdo" name="archivo" accept="image/*,video/*">
+        <div class="error-msg" id="error-archivo-recuerdo">Ese archivo pesa demasiado. Elige uno de menos de 10 MB.</div>
+      </div>
+
+      <button type="submit" class="enviar" id="btn-enviar">Enviar confirmación</button>
+    </form>
+
+    <div class="confirmacion-ok" id="confirmacion-ok">
+      <p id="confirmacion-texto">¡Gracias! Tu confirmación fue registrada.</p>
+
+      <div class="donacion">
+        <p class="donacion-texto">Tu presencia es el mejor regalo, pero si quieres colaborar con la celebración, aquí puedes hacerlo.</p>
+        <img src="yape-qr.png" alt="Código QR de Yape para donar" class="qr-imagen">
+        <a href="yape-qr.png" download="yape-demetria.png" class="descargar-qr">Descargar imagen</a>
+        <div class="numero-yape">
+          <span id="numero-yape-texto">985 338 787</span>
+          <button type="button" id="btn-copiar-numero">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Hecho con cariño para los 50 años de Demetria Yolanda
+</footer>
+
+<script>
+let asistencia = null;
+
+const btnSi = document.getElementById('btn-si');
+const btnNo = document.getElementById('btn-no');
+const errorAsistencia = document.getElementById('error-asistencia');
+const errorNombre = document.getElementById('error-nombre');
+
+btnSi.addEventListener('click', () => {
+  asistencia = 'si';
+  btnSi.classList.add('activo-si');
+  btnNo.classList.remove('activo-no');
+  errorAsistencia.style.display = 'none';
+});
+
+btnNo.addEventListener('click', () => {
+  asistencia = 'no';
+  btnNo.classList.add('activo-no');
+  btnSi.classList.remove('activo-si');
+  errorAsistencia.style.display = 'none';
+});
+
+document.getElementById('nombre').addEventListener('input', () => {
+  errorNombre.style.display = 'none';
+});
+
+const errorMensaje = document.getElementById('error-mensaje');
+document.getElementById('mensaje').addEventListener('input', () => {
+  errorMensaje.style.display = 'none';
+});
+
+const asistenciaInput = document.getElementById('asistencia-input');
+const TAMANO_MAXIMO = 10 * 1024 * 1024;
+const errorArchivoRecuerdo = document.getElementById('error-archivo-recuerdo');
+
+document.getElementById('archivo-recuerdo').addEventListener('change', () => {
+  errorArchivoRecuerdo.style.display = 'none';
+});
+
+function convertirABase64(archivo){
+  return new Promise((resolve, reject) => {
+    const lector = new FileReader();
+    lector.onload = () => resolve(lector.result.split(',')[1]);
+    lector.onerror = reject;
+    lector.readAsDataURL(archivo);
+  });
+}
+
+document.getElementById('form-rsvp').addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+  const formulario = evento.target;
+  const nombre = document.getElementById('nombre').value.trim();
+  const mensaje = document.getElementById('mensaje').value.trim();
+  const archivo = document.getElementById('archivo-recuerdo').files[0];
+  let valido = true;
+
+  if(!nombre){
+    errorNombre.style.display = 'block';
+    valido = false;
+  }
+  if(!asistencia){
+    errorAsistencia.style.display = 'block';
+    valido = false;
+  }
+  if(!mensaje){
+    errorMensaje.style.display = 'block';
+    valido = false;
+  }
+  if(archivo && archivo.size > TAMANO_MAXIMO){
+    errorArchivoRecuerdo.style.display = 'block';
+    valido = false;
+  }
+  if(!valido) return;
+
+  const btnEnviar = document.getElementById('btn-enviar');
+  btnEnviar.disabled = true;
+  btnEnviar.textContent = 'Enviando...';
+
+  try{
+    const datos = new FormData();
+    datos.append('nombre', nombre);
+    datos.append('asistencia', asistencia === 'si' ? 'Sí asiste' : 'No asiste');
+    datos.append('mensaje', mensaje);
+
+    if(archivo){
+      const base64 = await convertirABase64(archivo);
+      datos.append('archivo_base64', base64);
+      datos.append('archivo_nombre', archivo.name);
+      datos.append('archivo_tipo', archivo.type);
+    }
+
+    await fetch(formulario.action, {
+      method: 'POST',
+      body: datos,
+      mode: 'no-cors'
+    });
+    formulario.style.display = 'none';
+    const cajaOk = document.getElementById('confirmacion-ok');
+    document.getElementById('confirmacion-texto').textContent = asistencia === 'si'
+      ? 'Gracias, ' + nombre + '. Te esperamos el 12 de septiembre.'
+      : 'Gracias por avisar, ' + nombre + '. Te extrañaremos.';
+    cajaOk.style.display = 'block';
+  }catch(err){
+    btnEnviar.disabled = false;
+    btnEnviar.textContent = 'Enviar confirmación';
+    errorNombre.textContent = 'No se pudo enviar tu confirmación. Intenta de nuevo.';
+    errorNombre.style.display = 'block';
+  }
+});
+
+document.getElementById('btn-copiar-numero').addEventListener('click', async () => {
+  const boton = document.getElementById('btn-copiar-numero');
+  const textoOriginal = boton.textContent;
+  try{
+    await navigator.clipboard.writeText('985338787');
+    boton.textContent = '¡Copiado!';
+  }catch(err){
+    boton.textContent = 'No se pudo copiar';
+  }
+  setTimeout(() => { boton.textContent = textoOriginal; }, 2000);
+});
+</script>
+
+</body>
+</html>
